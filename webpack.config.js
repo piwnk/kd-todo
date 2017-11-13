@@ -1,36 +1,48 @@
 const path = require('path');
+// const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const OptimizeJsPlugin = require('optimize-js-plugin');
 
 module.exports = {
-   resolve: {
-      extensions: ['.js', '.jsx']
-   },
-   entry: './src/index.jsx',
-   output: {
-      path: path.resolve(__dirname, 'build'),
-      filename: 'app.bundle.js'
-   },
-   module: {
-      rules: [
-         {
-            test: /\.jsx?$/,
-            loader: 'babel-loader',
-            exclude: path.resolve(__dirname, 'node_modules'),
-            //  options: {
-            //     presets: ['es2015']
-            //  }
-         },
-         {
-            test: /\.css$/,
-            use: [
-               { loader: 'style-loader' },
-               {
-                  loader: 'css-loader',
-                  options: {
-                     modules: true
-                  }
-               }
-            ]
-         }
-      ]
-   }
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  entry: './src/index.jsx',
+  output: {
+    path: path.resolve(__dirname, 'build'),
+    filename: 'app.bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        exclude: path.resolve(__dirname, 'node_modules'),
+      },
+      {
+        test: /\.css$/,
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          }
+        ]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      filename: 'index.html',
+      inject: 'body'
+    }),
+    new UglifyJSPlugin(),
+    new OptimizeJsPlugin({
+      sourceMap: false
+    })
+  ]
 };

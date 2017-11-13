@@ -10,3 +10,9 @@
    width: 100vw;
    height: 100vh;
 }
+
+.Title {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 3rem;
+  color: purple;
+}
