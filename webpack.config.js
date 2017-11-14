@@ -35,14 +35,14 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      filename: 'index.html',
-      inject: 'body'
-    }),
-    new UglifyJSPlugin(),
-    new OptimizeJsPlugin({
-      sourceMap: false
-    })
+    // new HtmlWebpackPlugin({
+    //   template: 'src/index.html',
+    //   filename: 'index.html',
+    //   inject: 'body'
+    // }),
+    // new UglifyJSPlugin(),
+    // new OptimizeJsPlugin({
+    //   sourceMap: false
+    // })
   ]
 };

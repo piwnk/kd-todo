@@ -10,6 +10,7 @@ const TodoList = props => (
     {props.items.map(item => (
       <li
         key={item.id}
+        onClick={props.remove(item.id)}
       >
         {item.text}
       </li>
@@ -23,7 +24,8 @@ TodoList.propTypes = {
       PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.number
-      ]))).isRequired
+      ]))).isRequired,
+  remove: PropTypes.func.isRequired
 };
 
 export default TodoList;

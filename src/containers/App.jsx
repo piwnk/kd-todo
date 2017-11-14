@@ -42,7 +42,10 @@ export default class extends Component {
       <Title
         title={`My TODOs (${this.state.data.length})`}
       />
-      {<TodoList items={this.state.data} />}
+      {<TodoList
+        items={this.state.data}
+        remove={this.removeTodo}
+      />}
     </div>
   )
 }
