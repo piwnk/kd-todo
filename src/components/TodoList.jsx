@@ -1,31 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import style from '../../style/App.css';
 
-const TodoList = props => (
-  <ul
-    className={style.Title}
-  >
-    {props.items.map(item => (
+
+class ListItem extends Component {
+  static propTypes = {
+    id: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
+    remove: PropTypes.func.isRequired
+  }
+
+  render() {
+    return (
       <li
-        key={item.id}
-        onClick={props.remove(item.id)}
+        className={style.Item}
       >
-        {item.text}
+        <p>{this.props.text}</p>
+        <button
+          onClick={() => this.props.remove(this.props.id)}
+        >
+          X
+        </button>
       </li>
-    ))}
-  </ul>
-);
+    );
+  }
+}
 
-TodoList.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.objectOf(
-      PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number
-      ]))).isRequired,
-  remove: PropTypes.func.isRequired
-};
 
-export default TodoList;
+export default class TodoList extends Component {
+  static propTypes = {
+    items: PropTypes.arrayOf(
+      PropTypes.objectOf(
+        PropTypes.oneOfType([
+          PropTypes.string,
+          PropTypes.number
+        ]))).isRequired,
+    remove: PropTypes.func.isRequired
+  }
+
+  render() {
+    const ListItems = this.props.items.map(item => (
+      <ListItem
+        key={item.id}
+        id={item.id}
+        text={item.text}
+        remove={this.props.remove}
+      />
+    ));
+    return (
+      <ul>
+        {ListItems}
+      </ul>
+    );
+  }
+}

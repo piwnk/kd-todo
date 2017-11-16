@@ -9,7 +9,7 @@ export default class extends Component {
   state = {
     data: [{
       id: 1,
-      text: 'clean room'
+      text: 'clean room and all the stuff in da house asdfasdfasdfsf'
     }, {
       id: 2,
       text: 'wash the dishes'
@@ -42,10 +42,10 @@ export default class extends Component {
       <Title
         title={`My TODOs (${this.state.data.length})`}
       />
-      {<TodoList
+      <TodoList
         items={this.state.data}
         remove={this.removeTodo}
-      />}
+      />
     </div>
   )
 }

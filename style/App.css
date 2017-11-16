@@ -1,18 +1,48 @@
 .TodoApp {
-   background-color: #F5F5F5;
-   color: #222;
-   display: flex;
-   flex-direction: column;
-   flex-wrap: nowrap;
-   justify-content: center;
-   align-items: center;
-   align-content: center;
-   width: 100vw;
-   height: 100vh;
+  background-color: #F5F5F5;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  align-content: center;
+  width: 100vw;
+  height: 100vh;
 }
 
 .Title {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 3rem;
   color: purple;
+}
+
+.Item {
+  display: grid;
+  grid-template-columns: 7fr 1fr;
+  align-items: center;
+  border: solid black 1px;
+  border-top: 0;
+  padding: 10px;
+}
+
+.Item:first-child {
+  border-top: solid black 1px;
+}
+
+.Item p {
+  margin: 0;
+}
+
+.Item button {
+  background-color: white;
+  border: solid black 1px;
+  width: 2em;
+  height: 2em;
+  justify-self: end;
+}
+
+.Item button:hover {
+  background-color: purple;
+  color: white;
 }
