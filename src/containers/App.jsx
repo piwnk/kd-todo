@@ -9,10 +9,10 @@ export default class extends Component {
   state = {
     data: [{
       id: 1,
-      text: 'clean room and all the stuff in da house asdfasdfasdfsf'
+      text: 'clean room and all the stuff in da house'
     }, {
       id: 2,
-      text: 'wash the dishes'
+      text: 'wash the dishes1s'
     }, {
       id: 3,
       text: 'feed my cat'
