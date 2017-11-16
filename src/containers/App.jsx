@@ -44,6 +44,7 @@ export default class extends Component {
       />
       <TodoList
         items={this.state.data}
+        add={this.addTodo}
         remove={this.removeTodo}
       />
     </div>
