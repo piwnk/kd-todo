@@ -20,9 +20,8 @@ export default class TodoList extends Component {
     const ListItems = this.props.items.map(item => (
       <TodoItem
         key={item.id}
-        id={item.id}
         text={item.text}
-        remove={this.props.remove}
+        remove={() => {this.props.remove(item.id)}
       />
     ));
     // console.log(ListItems);

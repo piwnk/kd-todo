@@ -24,3 +24,15 @@ export default class TodoItem extends Component {
     );
   }
 }
+////////////////////////////////
+
+const TodoItem ({remove = () => {}, text = ''}) => (
+  <li className={style.Item}>
+    <p>{text}</p>
+    <button onClick={remove}>X</button>
+  </li>
+)
+
+TodoItem.proptypes = {...}
+export default TodoItem;
+

@@ -8,7 +8,7 @@ import style from '../../style/App.css';
 export default class extends Component {
   state = {
     data: [{
-      id: 1,
+      id: 12 ,
       text: 'clean room and all the stuff in da house'
     }, {
       id: 2,
