@@ -4,14 +4,14 @@ import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 import TodoForm from './TodoForm';
 
+import style from '../../style/App.css';
+
 export default class TodoList extends Component {
   static propTypes = {
-    items: PropTypes.arrayOf(
-      PropTypes.objectOf(
-        PropTypes.oneOfType([
-          PropTypes.string,
-          PropTypes.number
-        ]))).isRequired,
+    items: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]))).isRequired,
     add: PropTypes.func.isRequired,
     remove: PropTypes.func.isRequired
   }
@@ -27,7 +27,7 @@ export default class TodoList extends Component {
     ));
     // console.log(ListItems);
     return (
-      <ul>
+      <ul className={style.TodoList}>
         {ListItems}
         <TodoForm
           add={this.props.add}

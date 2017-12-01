@@ -9,23 +9,37 @@ export default class TodoForm extends Component {
   }
 
   state = {
-    textbox: 'Add item...'
+    textbox: ''
   }
 
-  handleAdd = () => {
-    this.props.add(this.state.textbox);
+  resetInput = (e) => {
+    const { tagName, nodeName } = e.target;
+
+    const node = tagName === 'INPUT' ? e.target :
+      tagName === 'BUTTON' ? e.target.previousSibling :
+        tagName === 'I' ? e.target.parentElement : undefined;
+
+    node.value = '';
+
     this.setState({
-      textbox: 'Add item...'
+      textbox: ''
     });
+    console.log('reset');
   }
 
-  handleOnChange = (event) => {
+  handleAdd = (e) => {
+    if (this.state.textbox) {
+      this.props.add(this.state.textbox);
+      this.resetInput(e);
+    }
+  }
+
+  handleOnChange = (e) => {
     this.setState({
-      textbox: event.target.value
+      textbox: e.target.value
     });
-    if (event.key === 'Enter') {
-      console.log(this.state.textbox);
-      this.handleAdd();
+    if (e.key === 'Enter') {
+      this.handleAdd(e);
     }
   }
 
@@ -35,14 +49,14 @@ export default class TodoForm extends Component {
     >
       <input
         type="text"
-        placeholder={this.state.textbox}
-        // onChange={this.handleOnChange}
+        // placeholder={this.state.textbox}
+        placeholder="Add item..."
         onKeyUp={this.handleOnChange}
-        // autofocus
+        // value={this.state.textbox}
       />
       <button
         onClick={this.handleAdd}
-      >+
+      ><i className="fa fa-plus" />
       </button>
     </li>
   )

@@ -5,7 +5,10 @@ import style from '../../style/App.css';
 
 export default class TodoItem extends Component {
   static propTypes = {
-    id: PropTypes.number.isRequired,
+    id: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number
+    ]).isRequired,
     text: PropTypes.string.isRequired,
     remove: PropTypes.func.isRequired
   }
@@ -18,7 +21,7 @@ export default class TodoItem extends Component {
         <p>{this.props.text}</p>
         <button
           onClick={() => this.props.remove(this.props.id)}
-        >X
+        ><i className="fa fa-remove" />
         </button>
       </li>
     );
